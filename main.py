@@ -96,6 +96,7 @@ def start_game():
     word = get_word()
     guessed_letters = ["_"] * len(word)
     mistakes = 0
+    used_letters = []
     while mistakes < 6:
         user_input = input("Type a letter: ")
         if user_input_validation(user_input):
@@ -109,11 +110,15 @@ def start_game():
             if ''.join(guessed_letters) == word:
                 return print("You won!!!")
         else:
-            mistakes += 1
-            draw_hangman(mistakes)
-            print(guessed_letters)
-            if mistakes == 6:
-                return print("You lose!!!")
+            if user_input not in used_letters:
+                used_letters.append(user_input)
+                mistakes += 1
+                draw_hangman(mistakes)
+                print(guessed_letters)
+                if mistakes == 6:
+                    return print("You lose!!!")
+            else:
+                print(f"You have already written this letter!!!")
 
 
 def main():
