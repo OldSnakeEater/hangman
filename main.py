@@ -125,7 +125,7 @@ def main():
         elif user_input == "0":
             break
         else:
-            print("Введены неверные данные")
+            print("Incorrect data entered!!!")
 
 
 if __name__ == "__main__":
